@@ -3,6 +3,20 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# Virtual Environment
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Local Training Cache & Weights (Keep binary blobs out of GitHub)
+models/weights/fastapi_model.pt
+.limits
+
+# AI Generated Output File
+app.py
+
+
 # C extensions
 *.so
 
