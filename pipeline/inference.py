@@ -1,6 +1,5 @@
-# Save this file exactly as: pipeline/inference.py
 import sys
-import subprocess  # 💡 NEW: Used to launch the local server in a separate background thread
+import subprocess  #  NEW: Used to launch the local server in a separate background thread
 import time
 from pipeline.predictor import TokenPredictor
 from pipeline.formatter import CodeFormatter
@@ -16,7 +15,7 @@ class CodeGenerator:
         # 1. Compute and predict tokens out of our custom network
         raw_words = self.predictor.generate_token_sequence(english_prompt, temperature)
         
-        print(f"\n💻 AI Streaming Output (Temperature: {temperature}):")
+        print(f"\n AI Streaming Output (Temperature: {temperature}):")
         print("-" * 35)
         
         # 2. Feed words one-by-one to live typing typewriter stream controller
@@ -33,7 +32,7 @@ class CodeGenerator:
         validation_passed = CodeValidator.validate_and_save(clean_python_code, export_filename)
         
         # ==============================================================================
-        # 💡 AUTOMATED BACKGROUND UVICORN RUNNER
+        #  AUTOMATED BACKGROUND UVICORN RUNNER
         # ==============================================================================
         if validation_passed and export_filename == "app.py":
             # If an older server process was already running from a previous prompt, terminate it safely first
@@ -52,4 +51,4 @@ class CodeGenerator:
             )
             
             time.sleep(1.0)  # Give the background process a quick second to securely open the port
-            print("🚀 Server Live! You can now send POST payloads directly to http://127.0.0")
+            print(" Server Live! You can now send POST payloads directly to http://127.0.0")

@@ -1,7 +1,5 @@
-# Save this file exactly as: data/generate_synthetic.py
-
 def build_advanced_fastapi_dataset():
-    print("🧠 Generating high-density Multi-Route & POST Body Structure data rows...")
+    print(" Generating high-density Multi-Route & POST Body Structure data rows...")
     
     actions = ["create", "build", "generate", "setup", "make"]
     apps = ["a simple fastapi app", "a fastapi web application", "a backend API service", "an app", "an api"]
@@ -50,7 +48,7 @@ def build_advanced_fastapi_dataset():
     with open("data/data.txt", "w", encoding="utf-8") as file:
         file.writelines(sorted(list(unique_rows)))
         
-    print(f"🎉 Success! Generated {len(unique_rows)} unique Single, Multi, and POST Schema workflows inside 'data/data.txt'.")
+    print(f" Success! Generated {len(unique_rows)} unique Single, Multi, and POST Schema workflows inside 'data/data.txt'.")
 
 if __name__ == "__main__":
     build_advanced_fastapi_dataset()

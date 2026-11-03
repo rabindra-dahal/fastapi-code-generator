@@ -1,4 +1,3 @@
-# Save this file exactly as: trainer.py
 import torch
 import torch.nn as nn
 from models.tokenizer import CodeTokenizer
@@ -52,7 +51,7 @@ def train_model():
     print("-" * 75)
     # Save network weights into subfolder folder
     torch.save(model.state_dict(), "models/weights/fastapi_model.pt")
-    print("Status: 💾 Model weights saved to 'models/weights/fastapi_model.pt'.")
+    print("Status:  Model weights saved to 'models/weights/fastapi_model.pt'.")
     return max_en, max_py
 
 if __name__ == "__main__":

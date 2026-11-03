@@ -1,4 +1,3 @@
-# Save this file exactly as: pipeline/formatter.py
 import sys
 import time
 import re  # Using native regex to isolate variable attributes precisely
@@ -13,7 +12,7 @@ class CodeFormatter:
             sys.stdout.write("\n")
             return True  # Signal that the next word starts a fresh line
         else:
-            # 💡 THE PRECISION FIX: 
+            #  THE PRECISION FIX: 
             # Use a strict regular expression to match exactly how Pydantic variables look.
             # This checks if a word consists ONLY of letters/underscores followed by a colon (e.g., 'title:', 'stock:')
             # This completely ignores structural parameters like 'product:' inside function arguments or ', ' markers!

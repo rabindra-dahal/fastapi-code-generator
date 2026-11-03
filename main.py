@@ -1,4 +1,3 @@
-# Save this file exactly as: main.py
 import os
 import sys
 from trainer import train_model
@@ -15,7 +14,7 @@ def run_training_pipeline():
     return max_en, max_py
 
 print("=" * 65)
-print("🤖 Custom FastAPI GenAI Interface Initializing...")
+print(" Custom FastAPI GenAI Interface Initializing...")
 print("=" * 65)
 
 # Path to the compiled binary model weights file
@@ -24,7 +23,7 @@ WEIGHTS_PATH = "models/weights/fastapi_model.pt"
 # Baseline loop step: Try loading the infrastructure cleanly
 try:
     if not os.path.exists(WEIGHTS_PATH):
-        print("ℹ️ Weights file not found. Launching training sequence...")
+        print(" Weights file not found. Launching training sequence...")
         max_en, max_py = run_training_pipeline()
     else:
         with open(".limits", "r") as f:
@@ -34,9 +33,9 @@ try:
     generator = CodeGenerator(max_en, max_py)
 
 except RuntimeError as e:
-    # 💡 THE AUTOMATIC FIX: Catch shape mismatch errors gracefully
+    #  THE AUTOMATIC FIX: Catch shape mismatch errors gracefully
     if "size mismatch" in str(e) or "Error(s) in loading state_dict" in str(e):
-        print("\n🔄 Shape Mismatch Detected! Your dataset vocabulary has expanded.")
+        print("\n Shape Mismatch Detected! Your dataset vocabulary has expanded.")
         print("Status: Wiping incompatible old weights and re-optimizing neural matrices...")
         
         # Safely remove the outdated checkpoint file if it exists
@@ -48,13 +47,13 @@ except RuntimeError as e:
         
         # Hot-reload the generator engine with updated limits
         generator = CodeGenerator(max_en, max_py)
-        print("✨ Hot-Reload Complete! Architecture models perfectly aligned.")
+        print(" Hot-Reload Complete! Architecture models perfectly aligned.")
     else:
         # Pass unrelated structural runtime crashes along to standard console diagnostics
         raise e
 
-print("\n🤖 System Ready! Type your request. Type 'exit' to shut down.")
-print("💡 Tip: Type '--train' at any time to instantly re-train on dataset updates!")
+print("\n System Ready! Type your request. Type 'exit' to shut down.")
+print(" Tip: Type '--train' at any time to instantly re-train on dataset updates!")
 print("=" * 65)
 
 # Active Continuous Interaction Chat Loop Block
@@ -63,17 +62,17 @@ while True:
         user_prompt = input("GenAI Prompt > ").strip()
         
         if user_prompt.lower() in ["exit", "quit", "close"]:
-            print("\n👋 Closing Generative AI cell space. Happy hacking!")
+            print("\n Closing Generative AI cell space. Happy hacking!")
             break
             
         if not user_prompt:
             continue
             
         if user_prompt.lower() == "--train":
-            print("\n♻️ Re-training request intercepted. Processing updates...")
+            print("\n Re-training request intercepted. Processing updates...")
             max_en, max_py = run_training_pipeline()
             generator = CodeGenerator(max_en, max_py)
-            print("✨ Hot-Reload Complete! The model and weights folder are fully updated.")
+            print(" Hot-Reload Complete! The model and weights folder are fully updated.")
             print("=" * 65)
             continue
             
@@ -89,5 +88,5 @@ while True:
         generator.stream_code(user_prompt, temperature=active_temp)
         
     except (KeyboardInterrupt, EOFError):
-        print("\n\n👋 System interrupted. Exiting session environment loop.")
+        print("\n\n System interrupted. Exiting session environment loop.")
         break

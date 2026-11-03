@@ -1,4 +1,3 @@
-# Save this file exactly as: models/tokenizer.py
 import os
 
 class CodeTokenizer:

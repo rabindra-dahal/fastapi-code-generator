@@ -1,4 +1,3 @@
-# Save this file exactly as: pipeline/predictor.py
 import torch
 import torch.nn.functional as F
 from models.tokenizer import CodeTokenizer
